@@ -6,8 +6,8 @@
 
 ## 📦 安装
 
-```
 SillyTavern → Extensions → Install Extension
+```
 https://github.com/lumenbloom/Extension-Timeline-Pro
 ```
 
