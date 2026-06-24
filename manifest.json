@@ -1,0 +1,11 @@
+{
+    "display_name": "Timeline Pro",
+    "loading_order": 9,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "tl_style.css",
+    "author": "lumenbloom",
+    "version": "2.1.0",
+    "homePage": "https://github.com/lumenbloom/Extension-Timeline-Pro"
+}

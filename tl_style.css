@@ -1,0 +1,344 @@
+/* All style elements for your extension go here */
+#myOverviewDiv {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    /* other styling as desired... */
+}
+
+/* ===== Modal ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    animation: tlFadeIn 0.25s ease-out;
+}
+
+@keyframes tlFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#networkContainer {
+    background-color: var(--SmartThemeBlurTintColor);
+    backdrop-filter: blur(var(--SmartThemeBlurStrength));
+    -webkit-backdrop-filter: blur(var(--SmartThemeBlurStrength));
+    text-shadow: 0px 0px calc(var(--shadowWidth) * 1px) var(--SmartThemeShadowColor);
+    padding: 20px;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128,128,128,0.3));
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    width: 92vw;
+    height: 92vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+/* ===== Top Action Buttons ===== */
+.close, .rotate, .expand {
+    float: right;
+    font-weight: bold;
+    z-index: 3;
+    position: relative;
+    background: none;
+    border: none;
+    padding: 4px 10px;
+    margin: 0 2px;
+    border-radius: 6px;
+    color: var(--SmartThemeBodyColor, #aaa);
+    font-size: 22px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+    line-height: 1;
+}
+.close:hover, .close:focus,
+.rotate:hover, .rotate:focus,
+.expand:hover, .expand:focus {
+    color: var(--SmartThemeBodyColor, #000);
+    background: rgba(128,128,128,0.15);
+    text-decoration: none;
+    transform: scale(1.08);
+}
+.expand { font-size: 20px; }
+.rotate { font-size: 24px; }
+
+/* ===== Search Bar ===== */
+#transparent-search {
+    background: rgba(128,128,128,0.1);
+    border: 1px solid rgba(128,128,128,0.2);
+    border-radius: 8px;
+    outline: none;
+    padding: 6px 14px;
+    color: var(--SmartThemeBodyColor, #fff);
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 180px;
+    font-size: 14px;
+    z-index: 10;
+    transition: border-color 0.2s, box-shadow 0.2s, width 0.2s;
+}
+#transparent-search:focus {
+    border-color: var(--SmartThemeInteractionColor, #6af);
+    box-shadow: 0 0 0 2px rgba(100,170,255,0.2);
+    width: 240px;
+}
+#transparent-search::placeholder {
+    color: var(--SmartThemeBodyColor, #aaa);
+    opacity: 0.5;
+}
+
+/* ===== Graph Container ===== */
+.graph-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#myDiagramDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* ===== Legend ===== */
+#legendDiv {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    background: var(--SmartThemeBlurTintColor);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(128,128,128,0.2);
+    border-radius: 10px;
+    padding: 8px 12px;
+    max-width: 180px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 6px;
+    margin: 2px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.legend-item:hover {
+    background: rgba(128,128,128,0.1);
+}
+.legend-item.active-legend {
+    background: rgba(128,128,128,0.15);
+    box-shadow: inset 0 0 0 2px var(--SmartThemeInteractionColor, rgba(100,170,255,0.5));
+}
+.legend-symbol {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.legend-text {
+    font-size: 13px;
+    color: var(--SmartThemeBodyColor, #ddd);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== Tippy Tooltip ===== */
+.tippy-box {
+    background: var(--SmartThemeBlurTintColor);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(128,128,128,0.25);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 16px;
+    max-width: 85vw;
+    max-height: 85vh;
+    color: var(--SmartThemeBodyColor, #eee);
+    font-size: 14px;
+    line-height: 1.5;
+}
+.tippy-box .tippy-content {
+    padding: 0;
+}
+
+/* Tap tippy (click tooltip) */
+.tap_tippy_content {
+    overflow: auto;
+    max-height: 75vh;
+    max-width: 85vw;
+}
+/* Custom scrollbar for tooltip */
+.tap_tippy_content::-webkit-scrollbar,
+.tippy-box .menu_div::-webkit-scrollbar {
+    width: 6px;
+}
+.tap_tippy_content::-webkit-scrollbar-track,
+.tippy-box .menu_div::-webkit-scrollbar-track {
+    background: transparent;
+}
+.tap_tippy_content::-webkit-scrollbar-thumb,
+.tippy-box .menu_div::-webkit-scrollbar-thumb {
+    background: rgba(128,128,128,0.3);
+    border-radius: 3px;
+}
+.tap_tippy_content::-webkit-scrollbar-thumb:hover,
+.tippy-box .menu_div::-webkit-scrollbar-thumb:hover {
+    background: rgba(128,128,128,0.5);
+}
+
+/* Header info */
+.tap_tippy_content .name_text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--SmartThemeBodyColor, #fff);
+}
+.tap_tippy_content .timestamp {
+    font-size: 12px;
+    color: var(--SmartThemeBodyColor, #999);
+    opacity: 0.7;
+    margin-bottom: 2px;
+}
+.tap_tippy_content hr {
+    border: none;
+    border-top: 1px solid rgba(128,128,128,0.15);
+    margin: 10px 0;
+}
+
+/* Message text in tooltip */
+.tippy-box .mes_text {
+    max-height: 50vh;
+    max-width: 75vw;
+    overflow-y: auto;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 4px 0;
+}
+
+/* Session menu */
+.tippy-box .menu_div {
+    overflow-y: auto;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.tippy-box .menu_div > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Navigation buttons */
+.tippy-box .menu_button {
+    flex: 1;
+    background: rgba(128,128,128,0.1);
+    border: 1px solid rgba(128,128,128,0.15);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--SmartThemeBodyColor, #eee);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    text-align: left;
+    text-shadow: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tippy-box .menu_button:hover {
+    background: rgba(128,128,128,0.2);
+    border-color: var(--SmartThemeInteractionColor, rgba(100,170,255,0.4));
+    transform: translateY(-1px);
+}
+.tippy-box .menu_button:active {
+    transform: translateY(0);
+}
+
+/* Branch button (→) */
+.tippy-box .branch_button {
+    flex: 0 0 auto;
+    width: 36px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 16px;
+    background: rgba(100,170,255,0.08);
+    border-color: rgba(100,170,255,0.2);
+    color: var(--SmartThemeInteractionColor, #6af);
+    font-weight: bold;
+}
+.tippy-box .branch_button:hover {
+    background: rgba(100,170,255,0.2);
+    border-color: var(--SmartThemeInteractionColor, #6af);
+    box-shadow: 0 0 8px rgba(100,170,255,0.2);
+}
+
+/* Hover tooltip (tippy on node hover, short preview) */
+.tippy-box:not([data-reference-hidden]) .tippy-content {
+    font-size: 13px;
+}
+
+/* ===== Modal Content (legacy) ===== */
+.modal-content {
+    background-color: var(--SmartThemeBlurTintColor);
+    backdrop-filter: blur(var(--SmartThemeBlurStrength));
+    -webkit-backdrop-filter: blur(var(--SmartThemeBlurStrength));
+    text-shadow: 0px 0px calc(var(--shadowWidth) * 1px) var(--SmartThemeShadowColor);
+    padding: 20px;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128,128,128,0.3));
+    border-radius: 12px;
+    width: 90vw;
+    height: 90vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+}
+
+/* ===== Helpers ===== */
+.hidden {
+    display: none;
+}
+.widthNatural {
+    flex: none !important;
+}
+
+/* ===== Timeline Button (inline settings) ===== */
+.timelineButton {
+    color: #aaaaaa;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 3;
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* ===== Hover tooltip specific (short truncated message) ===== */
+.tippy-box[data-theme~='timelines-hover'] {
+    padding: 8px 14px;
+    font-size: 13px;
+    max-width: 400px;
+    border-radius: 8px;
+}
