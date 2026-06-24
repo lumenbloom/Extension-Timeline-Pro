@@ -81,8 +81,8 @@ MIT
 
 ## 📦 Installation
 
-```
 SillyTavern → Extensions → Install Extension
+```
 https://github.com/lumenbloom/Extension-Timeline-Pro
 ```
 
